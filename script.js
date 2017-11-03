@@ -6,7 +6,6 @@ $(() => {
     //LOGIC
 
     drawGrid(gridSize)
-
     document.getElementById("start").onclick = () => {
         function iframeRef(frameRef) {
             return frameRef.contentWindow ?

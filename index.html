@@ -39,8 +39,12 @@ function updateColor(){
 	rgb[2] = document.getElementById("B").value
 	document.getElementById("color-picker-block").style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
 	console.log(rgb)
+	console.log(rgb2hex(rgb[0],rgb[1],rgb[2]))
 }
-
+function rgb2hex(red, green, blue) {
+	  var rgb = blue | (green << 8) | (red << 16);
+	  return '#' + (0x1000000 + rgb).toString(16).slice(1)
+}
 </script>
 <div class="color-picker" id="color-picker-block">
 	<div class="box" id="R-box" style="background:rgb(255,0,0)">R</div>
@@ -52,6 +56,7 @@ function updateColor(){
 	<div class="box" id="B-box" style="background:rgb(0,0,255)">B</div>
 	<input type="range" min="1" max="255" value="150" class="slider" id="B" onchange="updateColor()">
 	<br/>
+
 </div>
 
 <div class="grid-container">
