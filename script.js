@@ -17,6 +17,7 @@ $(() => {
 
         iframe = iframeRef(document.getElementById('twitter-widget-0'))
 
+        refreshGridData(document.getElementById('grid-container'))
     }
 
     function tweetsContentToList() {
@@ -92,15 +93,8 @@ $(() => {
                 }
             }
         }
-
-<<<<<<< HEAD
-
-
-
-=======
         refreshGridColor(grid)
     }
->>>>>>> 52f6461b41aac6ad894c92d300b9691413ef4a0b
 })
 function updateColor() {
     let rgb = []
