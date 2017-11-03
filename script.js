@@ -5,7 +5,9 @@ $(() => {
 
     //LOGIC
 
-    $('button').click(() => {
+    DrawGrid(gridSize)
+
+    document.getElementById("start").onclick = () => {
         function iframeRef(frameRef) {
             return frameRef.contentWindow ?
                 frameRef.contentWindow.document :
@@ -15,8 +17,7 @@ $(() => {
         iframe = iframeRef(document.getElementById('twitter-widget-0'))
 
         console.log(getPixels())
-        DrawGrid(gridSize)
-    })
+    }
 
     function tweetsContentToList() {
         const tweetList = iframe.getElementsByClassName("timeline-Tweet-text")
@@ -53,19 +54,22 @@ $(() => {
 
     //VIEW
 
-    function DrawGrid(gridSize){
+    function DrawGrid(gridSize) {
         const gridContiner = document.getElementById("grid-container")
-        for (let i = 0; i <= gridSize ; i++) {
+        for (let i = 0; i <= gridSize; i++) {
             for (let j = 0; j <= gridSize; j++) {
                 const node = document.createElement('div')
                 node.setAttribute('class', 'paint-block');
                 node.setAttribute('x', j);
                 node.setAttribute('y', i);
-                node.setAttribute('color','ffffff');
+                node.setAttribute('color', 'ffffff');
                 gridContiner.appendChild(node)
             }
             gridContiner.appendChild(document.createElement('br'))
         }
     }
+
+
+
 
 })
