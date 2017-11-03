@@ -54,7 +54,7 @@ $(() => {
 
     //VIEW
 
-    function DrawGrid(gridSize) {
+    function drawGrid(gridSize) {
         const gridContiner = document.getElementById("grid-container")
         for (let i = 0; i <= gridSize; i++) {
             for (let j = 0; j <= gridSize; j++) {

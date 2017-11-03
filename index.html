@@ -37,19 +37,26 @@ function updateColor(){
 	rgb[0] = document.getElementById("R").value
 	rgb[1] = document.getElementById("G").value
 	rgb[2] = document.getElementById("B").value
-	document.getElementById("R-box").style.background = "rgb(1,1,1)"
+	document.getElementById("R-box").style.background = `rgb(${rgb[0]},0,0)`
+	document.getElementById("G-box").style.background = `rgb(0,${rgb[1]},0)`
+	document.getElementById("B-box").style.background = `rgb(0,0,${rgb[2]})`
+	document.getElementById("color-picker-block").style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
 	console.log(rgb)
 }
 </script>
+<div class="color-picker" id="color-picker-block">
+	<div class="box" id="R-box" style="background:rgb(150,0,0)">R</div>
+	<input type="range" min="1" max="255" value="150" class="slider" id="R" onchange="updateColor()">
+	<br/>
+	<div class="box" id="G-box" style="background:rgb(0,150,0)">G</div>
+	<input type="range" min="1" max="255" value="150" class="slider" id="G" onchange="updateColor()">
+	<br/>
+	<div class="box" id="B-box" style="background:rgb(0,0,150)">B</div>
+	<input type="range" min="1" max="255" value="150" class="slider" id="B" onchange="updateColor()">
+	<br/>
+</div>
 
-<input type="range" min="1" max="255" value="50" class="slider" id="R" onchange="updateColor()">
-<div class="box" id="R-box" style="background:rgb(150,0,0)">R</div>
-<input type="range" min="1" max="255" value="50" class="slider" id="G" onchange="updateColor()">
-<div class="box" id="G-box" style="background:rgb(0,150,0)">G</div>
-<input type="range" min="1" max="255" value="50" class="slider" id="B" onchange="updateColor()">
-<div class="box" id="B-box" style="background:rgb(0,0,150)">B</div>
-
-<div id="grid-container">
+<div class="grid-container">
 
 </div>
 </body>
