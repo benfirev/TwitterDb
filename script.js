@@ -5,7 +5,7 @@ $(() => {
 
     //LOGIC
 
-    DrawGrid(gridSize)
+    drawGrid(gridSize)
 
     document.getElementById("start").onclick = () => {
         function iframeRef(frameRef) {
@@ -16,6 +16,7 @@ $(() => {
 
         iframe = iframeRef(document.getElementById('twitter-widget-0'))
 
+        refreshGrid(document.getElementById('grid-container'))
         console.log(getPixels())
     }
 
@@ -69,7 +70,18 @@ $(() => {
         }
     }
 
+    function changeNodeColor(node) {
+        const nodeColor = node.getAttribute('color')
+        node.style.background = `#${nodeColor}`
+    }
 
+    function refreshGrid(grid) {
+        console.log(grid);
+        for(let node of grid.children) {
+            console.log(node)
+            changeNodeColor(node);
+        }
+    }
 
 
 })
