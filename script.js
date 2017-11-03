@@ -113,6 +113,8 @@ function rgb2hex(red, green, blue) {
     return '#' + (0x1000000 + rgb).toString(16).slice(1)
 }
 function tweetNewPixel(hexColor,x,y){
-    let htmlhex = hexColor.substring(1,6)
-    window,open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${x},${y},%23${htmlhex})`)
+    let htmlhex = hexColor.substring(1,7)
+    var formattedX = ("0" + x).slice(-2);
+    var formattedY = ("0" + y).slice(-2);
+    window,open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${formattedX},${formattedY},${htmlhex})`)
 }
