@@ -3,6 +3,8 @@ $(() => {
     let iframe
     const gridSize = 10
 
+    updateColor()
+
     //LOGIC
 
     drawGrid(gridSize)
@@ -83,4 +85,27 @@ $(() => {
     }
 
 
+
+
+
 })
+function updateColor() {
+    let rgb = []
+    rgb[0] = document.getElementById("R").value
+    rgb[1] = document.getElementById("G").value
+    rgb[2] = document.getElementById("B").value
+    document.getElementById("hexColor").innerHTML = rgb2hex(rgb[0], rgb[1], rgb[2])
+    rgb[3] = rgb2hex(rgb[0], rgb[1], rgb[2])
+    document.getElementById("color-picker-block").style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
+    //console.log(rgb)
+    //console.log(rgb2hex(rgb[0], rgb[1], rgb[2]))
+    return rgb
+}
+function rgb2hex(red, green, blue) {
+    var rgb = blue | (green << 8) | (red << 16);
+    return '#' + (0x1000000 + rgb).toString(16).slice(1)
+}
+function tweetNewPixel(hexColor,x,y){
+    let htmlhex = hexColor.substring(1,6)
+    window,open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${x},${y},%23${htmlhex})`)
+}

@@ -6,6 +6,7 @@
 	"#PaintMeLikeOneOfYourBots (XX,YY,ColorCode)"
 	 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 	<link rel="stylesheet" href="style.css">
 	<title>hello ori</title>
@@ -26,42 +27,29 @@
 			}
 		}(document, "script", "twitter-wjs");
 	</script>
-
-
 	<br/>
-<br/>
-
-<script type="text/javascript">
-function updateColor(){
-	let rgb = []
-	rgb[0] = document.getElementById("R").value
-	rgb[1] = document.getElementById("G").value
-	rgb[2] = document.getElementById("B").value
-	document.getElementById("color-picker-block").style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
-	console.log(rgb)
-	console.log(rgb2hex(rgb[0],rgb[1],rgb[2]))
-}
-function rgb2hex(red, green, blue) {
-	  var rgb = blue | (green << 8) | (red << 16);
-	  return '#' + (0x1000000 + rgb).toString(16).slice(1)
-}
-</script>
-<div class="color-picker" id="color-picker-block">
-	<div class="box" id="R-box" style="background:rgb(255,0,0)">R</div>
-	<input type="range" min="1" max="255" value="150" class="slider" id="R" onchange="updateColor()">
 	<br/>
-	<div class="box" id="G-box" style="background:rgb(0,255,0)">G</div>
-	<input type="range" min="1" max="255" value="150" class="slider" id="G" onchange="updateColor()">
-	<br/>
-	<div class="box" id="B-box" style="background:rgb(0,0,255)">B</div>
-	<input type="range" min="1" max="255" value="150" class="slider" id="B" onchange="updateColor()">
-	<br/>
-	<h3 style="text-align:center;">abc</h3>
-</div>
+	<div class="color-picker" id="color-picker-block">
+		<div class="box" id="R-box" style="background:rgb(255,0,0)">R</div>
+		<input type="range" min="1" max="255" value="150" class="slider" id="R" onchange="updateColor()">
+		<br/>
+		<div class="box" id="G-box" style="background:rgb(0,255,0)">G</div>
+		<input type="range" min="1" max="255" value="150" class="slider" id="G" onchange="updateColor()">
+		<br/>
+		<div class="box" id="B-box" style="background:rgb(0,0,255)">B</div>
+		<input type="range" min="1" max="255" value="150" class="slider" id="B" onchange="updateColor()">
+		<br/>
+		<h3 id="hexColor" style="text-align:center;">#969696</h3>
+	</div>
+	<div id="grid-container">
 
-<div id="grid-container">
+	</div>
 
-</div>
+	<script type="text/javascript">
+	let color,x=0,y=0;
+	color = updateColor()[3]
+	</script>
+	<button onclick="tweetNewPixel(color,0,1)" type="button" name="button">ori is gay</button>
 </body>
 
 </html>
