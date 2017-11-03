@@ -17,8 +17,6 @@ $(() => {
 
         iframe = iframeRef(document.getElementById('twitter-widget-0'))
 
-        refreshGrid(document.getElementById('grid-container'))
-        console.log(getPixels())
     }
 
     function tweetsContentToList() {
@@ -43,7 +41,7 @@ $(() => {
         return res
     }
 
-    function getPixels() {
+    function getAllvalidTweets() {
         let res = []
         for (let tweet of tweetsContentToList()) {
             if (getTweetData(tweet)[3])
@@ -76,18 +74,33 @@ $(() => {
         node.style.background = `#${nodeColor}`
     }
 
-    function refreshGrid(grid) {
-        console.log(grid);
+    // called every x seconds
+    function refreshGridColor(grid) {
         for(let node of grid.children) {
-            console.log(node)
             changeNodeColor(node);
         }
     }
 
+    // called every x seconds
+    function refreshGridData(grid) {
+        let tweetsList = getAllvalidTweets()
+        for(let node of grid.children){
+            for(let tweet of tweetsList){
+                if(`${parseInt(tweet[0], 10)}` === node.getAttribute('x') && `${parseInt(tweet[1], 10)}` === node.getAttribute('y')){
+                    node.setAttribute('color', tweet[2])
+                    console.log('node is ' + node);
+                }
+            }
+        }
+
+<<<<<<< HEAD
 
 
 
-
+=======
+        refreshGridColor(grid)
+    }
+>>>>>>> 52f6461b41aac6ad894c92d300b9691413ef4a0b
 })
 function updateColor() {
     let rgb = []
