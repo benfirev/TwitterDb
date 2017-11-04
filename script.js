@@ -16,8 +16,16 @@ $(() => {
         }
 
         iframe = iframeRef(document.getElementById('twitter-widget-0'))
-
+        updateTweetFeed()
         refreshGridData(document.getElementById('grid-container'))
+    }
+
+
+
+    function updateTweetFeed() {
+        const loadButton = iframe.getElementsByClassName("timeline-LoadMore-prompt")[0]
+        console.log(loadButton);
+        loadButton.click()
     }
 
     function tweetsContentToList() {
@@ -77,7 +85,7 @@ $(() => {
 
     // called every x seconds
     function refreshGridColor(grid) {
-        for(let node of grid.children) {
+        for (let node of grid.children) {
             changeNodeColor(node);
         }
     }
@@ -85,9 +93,9 @@ $(() => {
     // called every x seconds
     function refreshGridData(grid) {
         let tweetsList = getAllvalidTweets()
-        for(let node of grid.children){
-            for(let tweet of tweetsList){
-                if(`${parseInt(tweet[0], 10)}` === node.getAttribute('x') && `${parseInt(tweet[1], 10)}` === node.getAttribute('y')){
+        for (let node of grid.children) {
+            for (let tweet of tweetsList) {
+                if (`${parseInt(tweet[0], 10)}` === node.getAttribute('x') && `${parseInt(tweet[1], 10)}` === node.getAttribute('y')) {
                     node.setAttribute('color', tweet[2])
                     console.log('node is ' + node);
                 }
@@ -96,6 +104,7 @@ $(() => {
         refreshGridColor(grid)
     }
 })
+
 function updateColor() {
     let rgb = []
     rgb[0] = document.getElementById("R").value
@@ -108,13 +117,15 @@ function updateColor() {
     //console.log(rgb2hex(rgb[0], rgb[1], rgb[2]))
     return rgb
 }
+
 function rgb2hex(red, green, blue) {
     var rgb = blue | (green << 8) | (red << 16);
     return '#' + (0x1000000 + rgb).toString(16).slice(1)
 }
-function tweetNewPixel(hexColor,x,y){
-    let htmlhex = hexColor.substring(1,7)
+
+function tweetNewPixel(hexColor, x, y) {
+    let htmlhex = hexColor.substring(1, 7)
     var formattedX = ("0" + x).slice(-2);
     var formattedY = ("0" + y).slice(-2);
-    window,open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${formattedX},${formattedY},${htmlhex})`)
+    window, open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${formattedX},${formattedY},${htmlhex})`)
 }
