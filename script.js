@@ -5,9 +5,13 @@ $(() => {
 
     updateColor()
 
-    //LOGIC
+    //FUNCTION CALLS
 
     drawGrid(gridSize)
+    addEventsToClass('paint-block')
+
+    //EVENTS
+
     document.getElementById("start").onclick = () => {
         function iframeRef(frameRef) {
             return frameRef.contentWindow ?
@@ -21,6 +25,15 @@ $(() => {
     }
 
 
+    //LOGIC
+    function addEventsToClass(className) {
+        let elements = document.getElementsByClassName(className)
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('click', function() {
+                tweetNewPixel(updateColor()[3], this.getAttribute('x'), this.getAttribute('x'))
+            }, false);
+        }
+    }
 
     function updateTweetFeed() {
         const loadButton = iframe.getElementsByClassName("timeline-LoadMore-prompt")[0]
@@ -127,5 +140,5 @@ function tweetNewPixel(hexColor, x, y) {
     let htmlhex = hexColor.substring(1, 7)
     var formattedX = ("0" + x).slice(-2);
     var formattedY = ("0" + y).slice(-2);
-    window, open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${formattedX},${formattedY},${htmlhex})`)
+    window, open(`https://twitter.com/intent/tweet/?text=%23PaintMeLikeOneOfYourBots%20(${formattedX},${formattedY},${htmlhex})%20ColorTweet%20%2D%20https://benfirev.github.io/TwitterDb/`)
 }
