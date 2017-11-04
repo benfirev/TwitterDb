@@ -24,8 +24,6 @@ $(() => {
         refreshGridData(document.getElementById('grid-container'))
     }
 
-
-    //LOGIC
     function addEventsToClass(className) {
         let elements = document.getElementsByClassName(className)
         for (var i = 0; i < elements.length; i++) {
@@ -34,6 +32,18 @@ $(() => {
             }, false);
         }
     }
+
+
+
+    //LOGIC
+
+    (function updater(){
+        while (true) {
+            setTimeout(function(){
+                getAllvalidTweets.length < 400 ? updateTweetFeed()
+            },10000)
+        }
+    })
 
     function updateTweetFeed() {
         const loadButton = iframe.getElementsByClassName("timeline-LoadMore-prompt")[0]
@@ -84,7 +94,7 @@ $(() => {
                 node.setAttribute('class', 'paint-block');
                 node.setAttribute('x', j);
                 node.setAttribute('y', i);
-                node.setAttribute('color', 'ffffff');
+                node.setAttribute('color', '333333');
                 gridContiner.appendChild(node)
             }
             gridContiner.appendChild(document.createElement('br'))
