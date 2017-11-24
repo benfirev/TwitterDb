@@ -37,13 +37,13 @@ $(() => {
 
     //LOGIC
 
-    (function updater(){
-        while (true) {
-            setTimeout(function(){
-                getAllvalidTweets.length < 400 ? updateTweetFeed()
-            },10000)
-        }
-    })
+    // (function updater(){
+    //     while (true) {
+    //         setTimeout(function(){
+    //             getAllvalidTweets.length < 400 ? updateTweetFeed()
+    //         },10000)
+    //     }
+    // })
 
     function updateTweetFeed() {
         const loadButton = iframe.getElementsByClassName("timeline-LoadMore-prompt")[0]
